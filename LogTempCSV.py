@@ -26,7 +26,7 @@ starttime=now
 
 writefile=now.strftime('%Y-%m-%d')+"Temp1.csv"
 
-# Write headers for new data file do this every ?? days
+# Write headers for new data file if file with todays date does not exist
 if not os.path.exists("./data/" + writefile):
         newFile(writefile)
 

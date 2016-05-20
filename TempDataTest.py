@@ -6,18 +6,23 @@ from datetime import datetime #, deltatime
 #Set sleep time in seconds
 sleeptime=2
 
+#Max attempts variable
+maxattempts=5
+
 #Set days per file
 ndays=7
 
+#28-01159070bcff
+
 # ID's: waterproof probe, chip
-sensorids = ["28-01159070bcff", "28-0215637a92ff"]
+sensorids = ["28-01159070bcff","28-0215637a92ff"]
 
 #function to create new file
 def newFile(filenm):
 	headers=["Date","Time","SensorID","Attempts", "Temperature"]
 	print headers
 	f=open("./data/"+filenm,'a')
-	f.write(', '.join(headers)+'\n')
+	f.write(','.join(headers)+'\n')
 	f.close()
 
 now=datetime.now()
@@ -43,19 +48,26 @@ for i in range(10):
 	for sensor in range(len(sensorids)):
 		temperatures = []
 		for polltime in range(0,3):
+				temperature=""
 				text = '';
 				attempts=0
 				while text.split("\n")[0].find("YES") == -1:
-						tfile = open("/sys/bus/w1/devices/"+ sensorids[sensor] +"/w1_slave")
-						text = tfile.read()
-						tfile.close()
+						if attempts==maxattempts:
+							temperature='NA'
+							break
+						try:
+							tfile = open("/sys/bus/w1/devices/"+ sensorids[sensor] +"/w1_slave")
+							text = tfile.read()
+							tfile.close()
+						except IOError:
+							print 'Sensor not found: ', sensorids[sensor]
 						time.sleep(1)
 						attempts += 1
-	 
-				secondline = text.split("\n")[1]
-				temperaturedata = secondline.split(" ")[9]
-				temperature = float(temperaturedata[2:])
-				temperature= temperature / 1000
+	 			if temperature != 'NA':
+					secondline = text.split("\n")[1]
+					temperaturedata = secondline.split(" ")[9]
+					temperature = float(temperaturedata[2:])
+					temperature= temperature / 1000
 				#print repr(( sensor,", ",temperature))
 	# Generate list of time and temperature values and write to file
 
