@@ -14,8 +14,8 @@ ndays=7
 
 #28-01159070bcff
 
-# ID's: waterproof probe, chip
-sensorids = ["28-01159070bcff","28-0215637a92ff"]
+# ID's: waterproof probe 1, chip, waterproof probe 2
+sensorids = ["28-01159070bcff","28-0215637a92ff", "28-000007c6d33f"]
 
 #function to create new file
 def newFile(filenm):

@@ -12,10 +12,16 @@ ndays=7
 
 #Base File Name
 basefname="Temp1.csv"
+fullpath = "/home/pi/Documents/TempLog/"
 
-# ID's: waterproof probe, chip
-sensorids = ["28-01159070bcff", "28-0215637a92ff"]
-fullpath = "/home/pi/Documents/TempLog/data/"
+# ID's: waterproof probe, chip, waterproof
+# sensorids = ["28-01159070bcff", "28-0215637a92ff", "28-000007c6d33f"]
+a,b=np.loadtxt(fullpath + 'sensors1.csv',dtype=([('ID', str,15),('Active',bool)]),delimiter=',',skiprows=1,usecols=(0,2),unpack=True)
+sensorids=a
+active=b
+sensorids=list(sensorids[active])
+
+
 # filenames = os.listdir(fullpath) Used if doing multi dy files
 # filenames = [i for i in filenames if i.endswith(basefname)]
 
@@ -24,7 +30,7 @@ def newFile(filenm):
 	headers=["Date","Time"]
 	headers.extend(sensorids)
 	print headers
-	f=open(fullpath+filenm,'a')
+	f=open(fullpath+"data/"+filenm,'a')
 	f.write(','.join(headers)+'\n')
 	f.close()
 
@@ -33,7 +39,7 @@ now=datetime.now()
 writefile=now.strftime('%Y-%m-%d') + basefname
 
 # Write headers for new data file if file with todays date does not exist
-if not os.path.exists(fullpath + writefile):
+if not os.path.exists(fullpath+"data/"+ writefile):
         newFile(writefile)
 
 # Loop to collect data
@@ -72,7 +78,7 @@ output_vec = [now.strftime('%Y-%m-%d'),now.strftime('%H:%M:%S')]
 output_vec.extend(avgtemperatures)
 print output_vec
 
-f=open(fullpath + writefile,'a')
+f=open(fullpath + "data/" + writefile,'a')
 c=1
 for item in output_vec:
 	if c==1:
