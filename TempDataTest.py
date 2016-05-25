@@ -2,20 +2,22 @@
 import time
 import os.path
 from datetime import datetime #, deltatime
+import numpy as np
 
 #Set sleep time in seconds
-sleeptime=2
+sleeptime=1
 
 #Max attempts variable
 maxattempts=5
 
-#Set days per file
-ndays=7
-
-#28-01159070bcff
+fullpath = "/home/pi/Documents/TempLog/"
 
 # ID's: waterproof probe 1, chip, waterproof probe 2
-sensorids = ["28-01159070bcff","28-0215637a92ff", "28-000007c6d33f"]
+#sensorids = ["28-01159070bcff","28-0215637a92ff", "28-000007c6d33f"]
+a,b=np.loadtxt(fullpath + 'sensors1.csv',dtype=([('ID', str,15),('Active',bool)]),delimiter=',',skiprows=1,usecols=(0,2),unpack=True)
+sensorids=a
+active=b
+sensorids=list(sensorids[active])
 
 #function to create new file
 def newFile(filenm):
@@ -38,12 +40,6 @@ if not os.path.exists("./data/" + writefile):
 #while True:
 for i in range(10):
 	now=datetime.now()
-	delta=now-starttime
-	if delta.days>ndays:
-		writefile=now.strftime('%Y-%m-%d')+"Temp1.csv"
-		newFile(writefile)
-		starttime=now
-
 	avgtemperatures = []
 	for sensor in range(len(sensorids)):
 		temperatures = []
