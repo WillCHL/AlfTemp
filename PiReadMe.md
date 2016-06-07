@@ -51,6 +51,8 @@
 	$ ~/Dropbox-Uploader/dropbox_uploader.sh upload ~/Documents/TempLog/data /
 -Easies way to download the code:
 	$ git clone https://github.com/andreafabrizi/Dropbox-Uploader/
+-Backup programming files (Need to find code to NOT includ subfolders):
+	$ ~/Dropbox-Uploader/dropbox_uploader.sh upload ~/Documents/TempLog/ /
 
 
 ## Change config file for gpio pins
