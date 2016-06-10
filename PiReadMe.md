@@ -19,26 +19,34 @@
 *	End python script:
 		
 	*	Control + C (keyboard interrupting)
-		
+
 		$ ps -elf | grep python
 		$ kill -9 <whatever_the_PID_is>
 		$ or: kill -TERM <pid>
 		$ keyboard interrupting ,i.e. Control+C
 
-*Run/edit start up script [This is not currently used]
+*	Run/edit start up script [This is not currently used]
 	*	Now we need to tell the operating system to run the script for the Pi user. In the command prompt or in a terminal window type :
+
 			$ sudo nano /etc/profile
-	Scroll to the bottom and add the following line :
+	*	Scroll to the bottom and add the following line :
+
 		$ sudo python /home/pi/myscript.py
-	where “/home/pi/myscript.py” is the path to your script.
+	*	where “/home/pi/myscript.py” is the path to your script.
+
 		$ /usr/bin/python ~/Documents/TempLog/TempDataTest.py
 
-*Cron Job [This method is used]
-	Open file (sudo means opening the job list for Admin, enter for Pi):
+*	Cron Job [This method is used]
+	*	Open file (sudo means opening the job list for Admin, enter for Pi):
+
 		$ sudo crontab -e
-	Edit file for python script:
-		$ @reboot python /home/pi/MyScript.py &
-	Edit file for dropbox upload ever 10 min:
+		
+	*	Edit file for python script:
+
+		$ */5 * * * * python ~/Documents/TempLog/GetDataCSV.py
+		
+	*	Edit file for dropbox upload ever 10 min:
+
 		*/10 * * * *  ~/Dropbox-Uploader/dropbox_uploader.sh upload ~/Documents/TempLog/data /
 
 *GIT
