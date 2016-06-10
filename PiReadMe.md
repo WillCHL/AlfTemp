@@ -3,6 +3,7 @@
 ## Command Line
 
 *	To load graphical interface:
+
 		$ startx
 *	To run python script: 
 		$ /usr/bin/python <python script>
