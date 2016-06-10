@@ -4,19 +4,22 @@ import os.path
 from datetime import datetime #, deltatime
 import numpy as np
 
+#Set logger number.  Will change the sensor file ir reads in and output file name.
+logger="1"
+
 #Max attempts variable
 maxattempts=3
 
-#Set days per file
-ndays=7
+#Set days per file - Currently not used
+#ndays=7
 
 #Base File Name
-basefname="Temp1.csv"
+basefname="Temp"+logger+".csv"
 fullpath = "/home/pi/Documents/TempLog/"
 
 # ID's: waterproof probe, chip, waterproof
 # sensorids = ["28-01159070bcff", "28-0215637a92ff", "28-000007c6d33f"]
-a,b=np.loadtxt(fullpath + 'sensors1.csv',dtype=([('ID', str,15),('Active',bool)]),delimiter=',',skiprows=1,usecols=(0,2),unpack=True)
+a,b=np.loadtxt(fullpath + 'sensors'+logger+'.csv',dtype=([('ID', str,15),('Active',bool)]),delimiter=',',skiprows=1,usecols=(0,2),unpack=True)
 sensorids=a
 active=b
 sensorids=list(sensorids[active])
