@@ -17,15 +17,17 @@
 		$ /usr/bin/python ~/Documents/TempLog/TempDataTest.py
 
 *	End python script:
-
+		
+	*	Control + C (keyboard interrupting)
+		
 		$ ps -elf | grep python
 		$ kill -9 <whatever_the_PID_is>
 		$ or: kill -TERM <pid>
 		$ keyboard interrupting ,i.e. Control+C
 
 *Run/edit start up script [This is not currently used]
-	Now we need to tell the operating system to run the script for the Pi user. In the command prompt or in a terminal window type :
-		$ sudo nano /etc/profile
+	*	Now we need to tell the operating system to run the script for the Pi user. In the command prompt or in a terminal window type :
+			$ sudo nano /etc/profile
 	Scroll to the bottom and add the following line :
 		$ sudo python /home/pi/myscript.py
 	where “/home/pi/myscript.py” is the path to your script.
