@@ -16,11 +16,12 @@
 	
 		$ /usr/bin/python ~/Documents/TempLog/TempDataTest.py
 
-*End python script:
-	$ ps -elf | grep python
-	$ kill -9 <whatever_the_PID_is>
-	$ or: kill -TERM <pid>
-	$ keyboard interrupting ,i.e. Control+C
+*	End python script:
+
+		$ ps -elf | grep python
+		$ kill -9 <whatever_the_PID_is>
+		$ or: kill -TERM <pid>
+		$ keyboard interrupting ,i.e. Control+C
 
 *Run/edit start up script [This is not currently used]
 	Now we need to tell the operating system to run the script for the Pi user. In the command prompt or in a terminal window type :
