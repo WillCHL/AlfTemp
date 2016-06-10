@@ -51,7 +51,7 @@
 			*/10 * * * *  ~/Dropbox-Uploader/dropbox_uploader.sh upload ~/Documents/TempLog/data /
 
 *	GIT
-*		Used to track changes in code
+	*	Used to track changes in code
 
 *	GIThub - online version (and backup) for changes in code.
 	*	https://github.com/WillCHL/AlfTemp.git
