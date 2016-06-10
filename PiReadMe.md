@@ -6,12 +6,15 @@
 
 		$ startx
 *	To run python script: 
+
 		$ /usr/bin/python <python script>
 
-*Log Temperature Code:
-	$ /usr/bin/python ~/Documents/TempLog/LogTempCSV.py
-*Test Temperature Code:
-	$ /usr/bin/python ~/Documents/TempLog/TempDataTest.py
+*	Log Temperature Code:
+
+		$ /usr/bin/python ~/Documents/TempLog/LogTempCSV.py
+*	Test Temperature Code:
+	
+		$ /usr/bin/python ~/Documents/TempLog/TempDataTest.py
 
 *End python script:
 	$ ps -elf | grep python
