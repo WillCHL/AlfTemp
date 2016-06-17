@@ -72,7 +72,15 @@
 		$ ~/Dropbox-Uploader/dropbox_uploader.sh upload ~/Documents/TempLog/ /
 
 
-## Change config file for gpio pins
+## Temperature sensor code
+
+*	Change config file for gpio pins
+*	Find sensors
+	
+		$ ls /sys/bus/w1/devices/
+
+
+
 
 ## Python
 
